@@ -145,25 +145,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="20250319.cpp" />
-    <ClCompile Include="20250320.cpp" />
-    <ClCompile Include="20250321.cpp" />
-    <ClCompile Include="20250324.cpp" />
-    <ClCompile Include="20250325.cpp" />
-    <ClCompile Include="20250326.cpp" />
-    <ClCompile Include="color_train.cpp" />
+    <ClCompile Include="C++ tutorial\20250319\star_stamp.cpp" />
+    <ClCompile Include="C++ tutorial\20250320\pointer_function.cpp" />
+    <ClCompile Include="C++ tutorial\20250321\array.cpp" />
+    <ClCompile Include="C++ tutorial\20250324\new and search.cpp" />
+    <ClCompile Include="C++ tutorial\20250325\class_test.cpp" />
+    <ClCompile Include="C++ tutorial\20250326\template_test.cpp" />
+    <ClCompile Include="OpenCV tutorial\color_train\color_train.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="edge_train.cpp" />
+    <ClCompile Include="OpenCV tutorial\edge_train\edge_train.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="20250319.h" />
-    <ClInclude Include="20250320.h" />
-    <ClInclude Include="20250321.h" />
-    <ClInclude Include="20250324.h" />
-    <ClInclude Include="20250325.h" />
-    <ClInclude Include="20250326.h" />
-    <ClInclude Include="color_train.h" />
-    <ClInclude Include="edge_train.h" />
+    <ClInclude Include="C++ tutorial\20250319\callstarstamp.h" />
+    <ClInclude Include="C++ tutorial\20250320\call_pt_fc.h" />
+    <ClInclude Include="C++ tutorial\20250321\call_array.h" />
+    <ClInclude Include="C++ tutorial\20250324\call_nas.h" />
+    <ClInclude Include="C++ tutorial\20250325\call_ct.h" />
+    <ClInclude Include="C++ tutorial\20250326\call_tt.h" />
+    <ClInclude Include="OpenCV tutorial\color_train\color_train.h" />
+    <ClInclude Include="OpenCV tutorial\edge_train\edge_train.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
