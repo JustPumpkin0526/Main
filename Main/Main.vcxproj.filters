@@ -73,6 +73,12 @@
     <Filter Include="헤더 파일\OpenCV train Header\edge_train">
       <UniqueIdentifier>{6b8b0250-51d2-4108-b611-60c20a595a6a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\C++ tutorial source\20250327">
+      <UniqueIdentifier>{943ddd84-84d1-4832-aaf8-60ec9bad85ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\C++ tutorial Header\20250327">
+      <UniqueIdentifier>{6bcfd46d-9446-449f-b991-6a640bca13c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -102,6 +108,9 @@
     <ClCompile Include="OpenCV tutorial\color_train\color_train.cpp">
       <Filter>소스 파일\OpenCV train source\color_train</Filter>
     </ClCompile>
+    <ClCompile Include="C++ tutorial\20250327\define.cpp">
+      <Filter>소스 파일\C++ tutorial source\20250327</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C++ tutorial\20250319\callstarstamp.h">
@@ -127,6 +136,9 @@
     </ClInclude>
     <ClInclude Include="OpenCV tutorial\edge_train\edge_train.h">
       <Filter>헤더 파일\OpenCV train Header\edge_train</Filter>
+    </ClInclude>
+    <ClInclude Include="C++ tutorial\20250327\define.h">
+      <Filter>헤더 파일\C++ tutorial Header\20250327</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

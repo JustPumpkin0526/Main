@@ -154,6 +154,7 @@
     <ClCompile Include="OpenCV tutorial\color_train\color_train.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenCV tutorial\edge_train\edge_train.cpp" />
+    <ClCompile Include="C++ tutorial\20250327\define.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C++ tutorial\20250319\callstarstamp.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="C++ tutorial\20250326\call_tt.h" />
     <ClInclude Include="OpenCV tutorial\color_train\color_train.h" />
     <ClInclude Include="OpenCV tutorial\edge_train\edge_train.h" />
+    <ClInclude Include="C++ tutorial\20250327\define.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
