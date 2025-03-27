@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="헤더 파일\OpenCV train Header">
+      <UniqueIdentifier>{3519a5c3-02d3-4d8f-a30a-1a0358f3ba3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\C++ tutorial Header">
+      <UniqueIdentifier>{7874d459-4e57-4d8e-805f-6923e91a853c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\C++ tutorial source">
+      <UniqueIdentifier>{dc1e38f4-6d29-4e1b-b6da-ff9a0c50d905}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\C++ tutorial source\20250319">
+      <UniqueIdentifier>{549b74f1-ca71-4157-9b00-3524f9485a08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\C++ tutorial source\20250320">
+      <UniqueIdentifier>{4751c92c-88fa-4fe3-8bd7-262d1e066c35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\C++ tutorial source\20250321">
+      <UniqueIdentifier>{c68177b9-39a0-45d6-8b42-659e08ab0732}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\C++ tutorial source\20250324">
+      <UniqueIdentifier>{cc2175ab-dec9-47f0-a7bf-18ab1ff59f8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\C++ tutorial source\20250325">
+      <UniqueIdentifier>{2f47c25c-aebd-469f-90e4-26f4a7b9c40d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\C++ tutorial source\20250326">
+      <UniqueIdentifier>{3145b446-0317-498b-9fc4-b08c1f10330d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\OpenCV train source">
+      <UniqueIdentifier>{949ab8dc-e608-4e55-b66a-e8b8dbc8f749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\OpenCV train source\edge_train">
+      <UniqueIdentifier>{7bb8feef-51a4-4738-a0f4-58d9eeb04820}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\OpenCV train source\color_train">
+      <UniqueIdentifier>{cd04a0a2-57d7-47e6-aa37-0521826d96e2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="20250319.cpp">
+      <Filter>소스 파일\C++ tutorial source\20250319</Filter>
+    </ClCompile>
+    <ClCompile Include="20250320.cpp">
+      <Filter>소스 파일\C++ tutorial source\20250320</Filter>
+    </ClCompile>
+    <ClCompile Include="20250321.cpp">
+      <Filter>소스 파일\C++ tutorial source\20250321</Filter>
+    </ClCompile>
+    <ClCompile Include="20250324.cpp">
+      <Filter>소스 파일\C++ tutorial source\20250324</Filter>
+    </ClCompile>
+    <ClCompile Include="20250325.cpp">
+      <Filter>소스 파일\C++ tutorial source\20250325</Filter>
+    </ClCompile>
+    <ClCompile Include="20250326.cpp">
+      <Filter>소스 파일\C++ tutorial source\20250326</Filter>
+    </ClCompile>
+    <ClCompile Include="edge_train.cpp">
+      <Filter>소스 파일\OpenCV train source\edge_train</Filter>
+    </ClCompile>
+    <ClCompile Include="color_train.cpp">
+      <Filter>소스 파일\OpenCV train source\color_train</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="20250319.h">
+      <Filter>헤더 파일\C++ tutorial Header</Filter>
+    </ClInclude>
+    <ClInclude Include="20250320.h">
+      <Filter>헤더 파일\C++ tutorial Header</Filter>
+    </ClInclude>
+    <ClInclude Include="20250321.h">
+      <Filter>헤더 파일\C++ tutorial Header</Filter>
+    </ClInclude>
+    <ClInclude Include="20250324.h">
+      <Filter>헤더 파일\C++ tutorial Header</Filter>
+    </ClInclude>
+    <ClInclude Include="20250325.h">
+      <Filter>헤더 파일\C++ tutorial Header</Filter>
+    </ClInclude>
+    <ClInclude Include="20250326.h">
+      <Filter>헤더 파일\C++ tutorial Header</Filter>
+    </ClInclude>
+    <ClInclude Include="edge_train.h">
+      <Filter>헤더 파일\OpenCV train Header</Filter>
+    </ClInclude>
+    <ClInclude Include="color_train.h">
+      <Filter>헤더 파일\OpenCV train Header</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
