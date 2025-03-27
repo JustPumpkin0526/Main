@@ -1,11 +1,11 @@
-#include "20250319.h"
-#include "20250320.h"
-#include "20250321.h"
-#include "20250324.h"
-#include "20250325.h"
-#include "20250326.h"
-#include "edge_train.h"
-#include "color_train.h"
+#include "C++ tutorial\20250319\callstarstamp.h"
+#include "C++ tutorial\20250320\call_pt_fc.h"
+#include "C++ tutorial\20250321\call_array.h"
+#include "C++ tutorial\20250324\call_nas.h"
+#include "C++ tutorial\20250325\call_ct.h"
+#include "C++ tutorial\20250326\call_tt.h"
+#include "OpenCV tutorial\edge_train\edge_train.h"
+#include "Opencv tutorial\color_train\color_train.h"
 
 int main() {
 
