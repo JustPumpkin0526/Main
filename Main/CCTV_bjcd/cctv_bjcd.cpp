@@ -56,7 +56,7 @@ int cctv_bjcd()
         }
         
     }
-    int size = 100;
+    int size = cctvs.size() * cctvs[0].size();
     for (int i = 0; i < 20; i++) {
         std::cout << "Group Index : " << i+1 << std::endl;
         std::cout << "Group BJCD : " << cctvs[i][0].bjcd << std::endl;
