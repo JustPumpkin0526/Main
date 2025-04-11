@@ -5,8 +5,10 @@
 #include "C++ tutorial\20250325\call_ct.h"
 #include "C++ tutorial\20250326\call_tt.h"
 #include "C++ tutorial\20250327\define.h"
+#include "C++ tutorial/20250404/»ó¼Ó.h"
 #include "OpenCV tutorial\edge_train\edge_train.h"
 #include "Opencv tutorial\color_train\color_train.h"
+#include "CCTV_bjcd/cctv_bjcd.h"
 
 int main() {
 
@@ -17,8 +19,9 @@ int main() {
 	//tuto0324();
 	//tuto0325();
 	//tuto0326();
-	define_test();
-
+	//define_test();
+	//der();
+	cctv_bjcd();
 
 	//OpenCV tutorial Code
 	//edge_train();

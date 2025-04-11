@@ -39,11 +39,11 @@ int tuto0319()
 	}
 
 	//switch 조건문
-	int num3;
+	int snum;
 	cout << "switch 조건문 숫자 입력 ";
-	cin >> num3;
+	cin >> snum;
 
-	switch (num3)
+	switch (snum)
 	{
 	case 1:
 		cout << "1입니다." << endl;
@@ -61,17 +61,17 @@ int tuto0319()
 	}
 
 	//0부터 100까지 숫자 출력
-	for (int num4 = 0; num4 <= 100; num4++)
+	for (int num3 = 0; num3 <= 100; num3++)
 	{
-		cout << num4 << endl;
+		cout << num3 << endl;
 	}
 
 	//배열 순서대로 출력
 	int count[3] = { 2018, 2019, 2020 };
 
-	for (int num5 = 0; num5 < sizeof(count) / sizeof(*count); num5++)
+	for (int anum = 0; anum < sizeof(count) / sizeof(*count); anum++)
 	{
-		cout << num5 + 1 << "번째 번호는" << count[num5] << "입니다." << endl;
+		cout << anum + 1 << "번째 번호는" << count[anum] << "입니다." << endl;
 	}
 
 	//for문 종료
