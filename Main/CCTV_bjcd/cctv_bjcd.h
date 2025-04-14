@@ -4,5 +4,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <ctime>
+#include <algorithm>
 
-int cctv_bjcd();
+void cctv_bjcd();

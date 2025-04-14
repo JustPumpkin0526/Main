@@ -19,14 +19,6 @@ struct CCTV_RISK
     int cctv_id;
     double score;
 
-    CCTV_RISK() : cctv_id(0), score(0.0) {}
-
-    CCTV_RISK(int cctv_id, double score)
-    {
-        this->cctv_id = cctv_id;
-        this->score = score;
-    }
-
     bool operator<(const CCTV_RISK& other) const {
         if (score == other.score)
             return cctv_id < other.cctv_id;
@@ -34,10 +26,15 @@ struct CCTV_RISK
     };
 };
 
-int cctv_bjcd()
+void cctv_bjcd()
 {
+    std::cout << "=============================================================================================" << std::endl;
+    std::cout << "테스트 더미 데이터 셋 생성" << std::endl;
+    std::cout << "------------------------------------------------" << std::endl;
+
     std::vector<std::vector<CCTV>> cctvs;
     std::vector<CCTV_RISK> risk_cctvs;
+    double rand_num;
     int num = 5;
     std::vector<int> pos_cctvs = { 5424, 5603, 71005, 71013, 4160, 9527, 8221, 8517, 80344, 3686, 6032, 9232, 1857, 35296, 48967, 49060, 47972,
     9985, 9919, 9947 };
@@ -46,30 +43,49 @@ int cctv_bjcd()
         , "9972025000", "9963034000", "9911011000" };
     
     std::cout << "총 생성할 CCTV 그룹 수 : " << pos_bjcds.size() << std::endl;
-    std::cout << "총 생성할 CCTV 수 : " << pos_cctvs.size()*5 << std::endl;
+    std::cout << "총 생성할 CCTV 수 : " << pos_cctvs.size()*num << std::endl;
+    std::cout << "=============================================================================================" << std::endl;
+
     cctvs.resize(pos_bjcds.size());
+    int size = pos_cctvs.size() * num;
     for (int bjcd_id = 0; bjcd_id < pos_bjcds.size(); bjcd_id++) {
-        for (int cctv_id = 0; cctv_id < 5; cctv_id++) {
+        std::cout << "Group Index : " << bjcd_id + 1 << std::endl;
+        for (int cctv_id = 0; cctv_id < num; cctv_id++) {
             int id = pos_cctvs[bjcd_id] + cctv_id;
             std::string bjcd = pos_bjcds[bjcd_id];
             cctvs[bjcd_id].push_back({ id, bjcd });
         }
-        
-    }
-    int size = cctvs.size() * cctvs[0].size();
-    for (int i = 0; i < 20; i++) {
-        std::cout << "Group Index : " << i+1 << std::endl;
-        std::cout << "Group BJCD : " << cctvs[i][0].bjcd << std::endl;
+        std::cout << "Group BJCD : " << cctvs[bjcd_id][0].bjcd << std::endl;
         std::cout << "남아있는 CCTV : " << size << std::endl;
-        std::cout << "생성할 CCTV : " << cctvs[i].size() << std::endl;
-        /*for (int j = 0; j < 5; j++) {
-            std::cout << cctvs[i][j].id << std::endl;
-            std::cout << cctvs[i][j].bjcd << std::endl;
-        }*/
-        size -= cctvs[i].size();
+        std::cout << "생성할 CCTV : " << cctvs[bjcd_id].size() << std::endl;
+        std::cout << "------------------------------------------------" << std::endl;
+        size -= cctvs[bjcd_id].size();
+    }
+    std::cout << "=============================================================================================" << std::endl;
+
+    srand(time(NULL));
+    std::cout << "생성된 CCTV 그룹 수 : " << cctvs.size() << std::endl;
+    std::cout << "생성된 CCTV 수 : " << cctvs.size() * cctvs[0].size() << std::endl;
+
+    std::cout << "=============================================================================================" << std::endl;
+    //risk_cctvs.resize(pos_bjcds.size());
+    for (int rcid = 0; rcid < cctvs.size(); rcid++) {
+        for (int risk = 0; risk < cctvs[rcid].size(); risk++) {\
+            rand_num = rand() % 100;
+            risk_cctvs.push_back({ cctvs[rcid][risk].id, rand_num });
+        }
+        std::sort(risk_cctvs.begin() + rcid*5, risk_cctvs.end());
     }
 
-    
+    for (int i = 0; i < cctvs.size(); i++) {
+        std::cout << "BJCD : " << cctvs[i][0].bjcd << std::endl;
+        std::cout << "RISK CCTVS : " << std::endl;
+        for (int j = 0; j < cctvs[i].size(); j++) {
+            std::cout << "CCTV ID : " << risk_cctvs[(i*num)+j].cctv_id << "/ SCORE : " << risk_cctvs[(i * num) + j].score << std::endl;
+        }
+        std::cout << "------------------------------------------------" << std::endl;
+    }
+    std::cout << "=============================================================================================" << std::endl;
     // cctvs 100 개
     // risk_ccvs 100 개
     // 변수 생성 (type 적당한걸로)
@@ -80,5 +96,4 @@ int cctv_bjcd()
     //    5427 - 70
     //    5428 - 50
     //4148037000
-    return 0;
 }
