@@ -84,12 +84,13 @@ void cctv_bjcd()
     for (int sorted_risk = 0; sorted_risk < risk_cctvs.size(); sorted_risk++) {
         
         if (find(risk_bjcd.begin(), risk_bjcd.end(), cctvs[risk_cctvs[sorted_risk].cctv_id].bjcd) == risk_bjcd.end()) {
-            
             std::cout << "BJCD : " << cctvs[risk_cctvs[sorted_risk].cctv_id].bjcd << std::endl;
             std::cout << "RISK CCTVS : " << std::endl;
             risk_bjcd.push_back(cctvs[risk_cctvs[sorted_risk].cctv_id].bjcd);
             for (int risk_count = 0; risk_count < multnum; risk_count++) {
-                std::cout << "CCTV ID : " << cctv_group[cctvs[risk_cctvs[sorted_risk].cctv_id].bjcd][risk_count].id << "/ SCORE : " << risk_cctvs[cctv_group[]] <<std::endl;
+                int id = cctv_group[cctvs[risk_cctvs[sorted_risk].cctv_id].bjcd][risk_count].id;
+                double score = risk_cctvs[find(risk_cctvs.begin(), risk_cctvs.end(), id) - risk_cctvs.begin()].score;
+                std::cout << "CCTV ID : " << id << "/ SCORE : " << score <<std::endl;
             }
             std::cout << "-----------------------------------------------" << std::endl;
         }
