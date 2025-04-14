@@ -79,6 +79,18 @@
     <Filter Include="헤더 파일\C++ tutorial Header\20250327">
       <UniqueIdentifier>{6bcfd46d-9446-449f-b991-6a640bca13c3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\CCTV_bjcd source">
+      <UniqueIdentifier>{1e0a4734-91bb-40f4-9487-1ee4698ed667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\CCTV_bjcd Header">
+      <UniqueIdentifier>{a87fa6c0-0458-4814-b76a-1a5813a612b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\C++ tutorial source\20250404">
+      <UniqueIdentifier>{621a517f-6a55-4831-9400-684a1cafb8bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\C++ tutorial Header\20250404">
+      <UniqueIdentifier>{e5125ec8-bee2-4d03-a541-6f1cda393acc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -111,11 +123,11 @@
     <ClCompile Include="C++ tutorial\20250327\define.cpp">
       <Filter>소스 파일\C++ tutorial source\20250327</Filter>
     </ClCompile>
-    <ClCompile Include="C++ tutorial\20250404\상속.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="CCTV_bjcd\cctv_bjcd.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\CCTV_bjcd source</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ tutorial\20250404\상속.cpp">
+      <Filter>소스 파일\C++ tutorial source\20250404</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -146,11 +158,11 @@
     <ClInclude Include="C++ tutorial\20250327\define.h">
       <Filter>헤더 파일\C++ tutorial Header\20250327</Filter>
     </ClInclude>
-    <ClInclude Include="C++ tutorial\20250404\상속.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="CCTV_bjcd\cctv_bjcd.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\CCTV_bjcd Header</Filter>
+    </ClInclude>
+    <ClInclude Include="C++ tutorial\20250404\상속.h">
+      <Filter>헤더 파일\C++ tutorial Header\20250404</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
