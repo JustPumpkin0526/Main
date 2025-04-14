@@ -99,6 +99,9 @@ void cctv_bjcd()
 
     std::cout << "=============================================================================================" << std::endl;
     //risk_cctvs.resize(pos_bjcds.size());
+    std::cout << "积己等 CCTV 弊缝 荐 : " << cctvs.size() << std::endl;
+    std::cout << "积己等 CCTV 荐 : " << cctvs.size() * multnum << std::endl;
+    srand(time(NULL));
     for (int rcid = 0; rcid < cctvs.size(); rcid++) {
         for (int risk = 0; risk < cctvs[rcid].size(); risk++) {\
             rand_score = rand() % 100;
