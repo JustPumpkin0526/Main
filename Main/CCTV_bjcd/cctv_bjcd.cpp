@@ -35,7 +35,8 @@ void cctv_bjcd()
     std::map<std::string, std::vector<CCTV>> cctv_group; //cctv의 그룹
     std::map<int, CCTV> cctvs; //cctv 더미 데이터 모음
     std::vector<CCTV_RISK> risk_cctvs; // cctv 위험도 측정
-    std::vector<std::string> risk_bjcd;
+    std::map<std::string,std::vector<CCTV_RISK>> risk_bjcd; //cctv 위험도 bjcd 그룹
+    std::vector<std::string> risk_check; // 중복 확인
     double rand_score;
     int multnum = 5;
     std::vector<int> pos_cctvs = { 5424, 5603, 71005, 71013, 4160, 9527, 3171, 8517, 80344, 3686, 6032, 9232, 1857, 35296, 48967, 49060, 47972,
@@ -54,10 +55,9 @@ void cctv_bjcd()
         for (int count = 0;count < multnum;count++) {
             int cctv_id = pos_cctvs[cctv_data] + count;
             std::string bjcd_id = pos_bjcds[cctv_data];
-            cctvs.insert({ pos_cctvs[cctv_data] + count, {cctv_id, bjcd_id} });
+            cctvs.insert({ cctv_id , {cctv_id, bjcd_id} });
             cctv_group[pos_bjcds[cctv_data]].push_back({ cctv_id, bjcd_id });
         }
-        std::cout << &cctv_group[pos_bjcds[cctv_data]] << std::endl;
         std::cout << "남아있는 CCTV : " << size << std::endl;
         std::cout << "생성할 CCTV : " << multnum << std::endl;
         std::cout << "-----------------------------------------------" << std::endl;
@@ -72,39 +72,28 @@ void cctv_bjcd()
         int cctv_id = cctvs[pos_cctvs[risk_cctv / multnum] + risk_cctv % 5].id;
         double rand_score = rand()%100;
         risk_cctvs.push_back({ cctv_id,rand_score });
+        risk_bjcd[pos_bjcds[risk_cctv / 5]].push_back({ cctv_id,rand_score });
     }
     std::sort(risk_cctvs.begin(), risk_cctvs.end());
-    
 
-    /*for (int risk_cctv = 0; risk_cctv < cctvs.size();risk_cctv++) {
-        std::cout << "현재 cctv_id " << risk_cctvs[risk_cctv].cctv_id << std::endl;
-        std::cout << "현재 score " << risk_cctvs[risk_cctv].score << std::endl;
-    }
-    */
-    for (int sorted_risk = 0; sorted_risk < risk_cctvs.size(); sorted_risk++) {
-        
-        if (find(risk_bjcd.begin(), risk_bjcd.end(), cctvs[risk_cctvs[sorted_risk].cctv_id].bjcd) == risk_bjcd.end()) {
-            std::cout << "BJCD : " << cctvs[risk_cctvs[sorted_risk].cctv_id].bjcd << std::endl;
-            std::cout << "RISK CCTVS : " << std::endl;
-            risk_bjcd.push_back(cctvs[risk_cctvs[sorted_risk].cctv_id].bjcd);
-            for (int risk_count = 0; risk_count < multnum; risk_count++) {
-                int id = cctv_group[cctvs[risk_cctvs[sorted_risk].cctv_id].bjcd][risk_count].id;
-                double score = risk_cctvs[find(risk_cctvs.begin(), risk_cctvs.end(), id) - risk_cctvs.begin()].score;
-                std::cout << "CCTV ID : " << id << "/ SCORE : " << score <<std::endl;
+    for (int cctv_score = 0; cctv_score < risk_cctvs.size(); cctv_score++) {
+        std::string bjcd = cctvs[risk_cctvs[cctv_score].cctv_id].bjcd;
+        if (find(risk_check.begin(), risk_check.end(), bjcd) == risk_check.end()) {
+            std::sort(risk_bjcd[bjcd].begin(), risk_bjcd[bjcd].end());
+            risk_check.push_back(bjcd);
+            std::cout << "BJCD : " << bjcd << std::endl;
+            std::cout << "RISK CCTVS :" << std::endl;
+            for (int roll = 0; roll < std::min(multnum, (int)risk_bjcd[bjcd].size()); roll++) {
+                int cctv_id = risk_bjcd[bjcd][roll].cctv_id;
+                auto it = std::find_if(risk_cctvs.begin(), risk_cctvs.end(), [&](const CCTV_RISK& r) {
+                    return r.cctv_id == cctv_id;
+                    });
+                if (it != risk_cctvs.end()) {
+                    std::cout << "CCTV ID : " << cctv_id << "/ SCORE : " << it->score << std::endl;
+                }
             }
             std::cout << "-----------------------------------------------" << std::endl;
         }
-        
     }
-    
-    // cctvs 100 개
-    // risk_ccvs 100 개
-    // 변수 생성 (type 적당한걸로)
-    //4183041000
-    //    5424 - 95
-    //    5425 - 90
-    //    5426 - 80
-    //    5427 - 70
-    //    5428 - 50
-    //4148037000
+
 }
