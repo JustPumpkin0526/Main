@@ -129,6 +129,9 @@
     <ClCompile Include="C++ tutorial\20250404\상속.cpp">
       <Filter>소스 파일\C++ tutorial source\20250404</Filter>
     </ClCompile>
+    <ClCompile Include="CCTV_bjcd\test.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C++ tutorial\20250319\callstarstamp.h">

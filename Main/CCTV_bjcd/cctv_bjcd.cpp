@@ -35,7 +35,7 @@ void cctv_bjcd()
     std::map<std::string, std::vector<CCTV>> cctv_group;                                                                                          //cctv의 그룹
     std::map<int, CCTV> cctvs;                                                                                                                   //cctv 더미 데이터 모음
     std::vector<CCTV_RISK> risk_cctvs;                                                                                                          // cctv 위험도 측정
-    std::map<std::string,std::vector<CCTV_RISK>> risk_bjcd;                                                                                    //cctv 위험도 bjcd 그룹
+    std::map<std::string, std::vector<CCTV_RISK>> risk_bjcd;                                                                                    //cctv 위험도 bjcd 그룹
     std::vector<std::string> risk_check;                                                                                                      // 중복 확인
     double rand_score;                                                                                                                       // 스코어 랜덤 생성
     int multnum = 5;                                                                                                                        // 곱할 숫자 5로 지정함
@@ -44,14 +44,14 @@ void cctv_bjcd()
     std::vector<std::string> pos_bjcds = { "4183041000", "4148037000", "4165035000", "4167031000", "4155035000", "4613014000", "4211034000", "4182031000"
         , "4136025600", "4163011400", "1120010800", "4719012300", "4122010600", "4793036000", "4167035000", "4182025000", "4372025000"  //법정동 코드 모음
         , "9972025000", "9963034000", "9911011000" };
-    
+
     std::cout << "총 생성할 CCTV 그룹 수 : " << pos_bjcds.size() << std::endl;
     std::cout << "총 생성할 CCTV 수 : " << pos_cctvs.size() * multnum << std::endl;
     std::cout << "=============================================================================================" << std::endl;
     //cctv 데이터 모음 생성 및 그룹화 진행
     int size = pos_cctvs.size() * multnum;                                                                   //그룹 사이즈
     for (int cctv_data = 0; cctv_data < pos_cctvs.size(); cctv_data++) {                                     //cctvid 모음의 크기 만큼 반복 (20회 반복)
-        std::cout << "Group Index : " << cctv_data + 1 << std::endl;           
+        std::cout << "Group Index : " << cctv_data + 1 << std::endl;
         std::cout << "Group BJCD : " << pos_bjcds[cctv_data] << std::endl;
         for (int count = 0;count < multnum;count++) {                                                        // 5회 반복(각 그룹의 요소 추가)
             int cctv_id = pos_cctvs[cctv_data] + count;                                                      // cctv id
@@ -72,7 +72,7 @@ void cctv_bjcd()
     //CCTV 리스크 모음 생성 및 리스크 CCTV 그룹 생성
     for (int risk_cctv = 0; risk_cctv < cctvs.size();risk_cctv++) {                                         //cctvs의 크기만큼 risk_cctv 생성
         int cctv_id = cctvs[pos_cctvs[risk_cctv / multnum] + risk_cctv % 5].id;                             //cctvs의 cctv_id 불러오기
-        double rand_score = rand()%100;                                                                     // 랜덤 점수 생성
+        double rand_score = rand() % 100;                                                                     // 랜덤 점수 생성
         risk_cctvs.push_back({ cctv_id,rand_score });                                                       //리스크 CCTV 모음에 벡터 삽입
         risk_bjcd[pos_bjcds[risk_cctv / 5]].push_back({ cctv_id,rand_score });                              //리스크 그룹에 벡터 삽입
     }
@@ -80,7 +80,7 @@ void cctv_bjcd()
 
     //정렬이 된 CCTV 리스크 모음 출력
     for (int cctv_score = 0; cctv_score < risk_cctvs.size(); cctv_score++) {
-        std::string bjcd = cctvs[risk_cctvs[cctv_score].cctv_id].bjcd;                                      
+        std::string bjcd = cctvs[risk_cctvs[cctv_score].cctv_id].bjcd;
         if (find(risk_check.begin(), risk_check.end(), bjcd) == risk_check.end()) {
             std::sort(risk_bjcd[bjcd].begin(), risk_bjcd[bjcd].end());
             risk_check.push_back(bjcd);
@@ -98,5 +98,6 @@ void cctv_bjcd()
             std::cout << "-----------------------------------------------" << std::endl;
         }
     }
+    std::cout << "=============================================================================================" << std::endl;
 
 }
