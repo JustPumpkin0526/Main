@@ -154,7 +154,7 @@
     <ClCompile Include="C++ tutorial\20250326\template_test.cpp" />
     <ClCompile Include="C++ tutorial\20250404\상속.cpp" />
     <ClCompile Include="CCTV_bjcd\cctv_bjcd.cpp" />
-    <ClCompile Include="CCTV_bjcd\test.cpp" />
+    <ClCompile Include="C++ tutorial\20250416\rand_test.cpp" />
     <ClCompile Include="OpenCV tutorial\color_train\color_train.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OpenCV tutorial\edge_train\edge_train.cpp" />
@@ -168,6 +168,7 @@
     <ClInclude Include="C++ tutorial\20250325\call_ct.h" />
     <ClInclude Include="C++ tutorial\20250326\call_tt.h" />
     <ClInclude Include="C++ tutorial\20250404\상속.h" />
+    <ClInclude Include="C++ tutorial\20250416\rand_test.h" />
     <ClInclude Include="CCTV_bjcd\cctv_bjcd.h" />
     <ClInclude Include="OpenCV tutorial\color_train\color_train.h" />
     <ClInclude Include="OpenCV tutorial\edge_train\edge_train.h" />

@@ -129,7 +129,7 @@
     <ClCompile Include="C++ tutorial\20250404\상속.cpp">
       <Filter>소스 파일\C++ tutorial source\20250404</Filter>
     </ClCompile>
-    <ClCompile Include="CCTV_bjcd\test.cpp">
+    <ClCompile Include="C++ tutorial\20250416\rand_test.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -166,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="C++ tutorial\20250404\상속.h">
       <Filter>헤더 파일\C++ tutorial Header\20250404</Filter>
+    </ClInclude>
+    <ClInclude Include="C++ tutorial\20250416\rand_test.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
