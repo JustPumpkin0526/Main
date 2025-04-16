@@ -22,8 +22,8 @@ int main() {
 	//tuto0326();
 	//define_test();
 	//der();
-	//cctv_bjcd();
-	rand_test();
+	cctv_bjcd();
+	//rand_test();
 
 	//OpenCV tutorial Code
 	//edge_train();
