@@ -1,10 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <set>
-#include <map>
-#include <random>
-#include <algorithm>
+#include "cctv_bjcd.h"
 
 struct CCTV
 {
@@ -38,7 +32,7 @@ struct CCTV_RISK
     };
 };
 
-int main()
+void cctv_bjcd()
 {
     const int max_cctv_num = 100;
     std::map<int, CCTV> cctvs;
@@ -90,30 +84,30 @@ int main()
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // BJCD 기반 침수 위험 CCTV 그룹화
 
-    std::map<std::string, std::vector<CCTV_RISK>> grouped_risk_cctvs;
-    std::vector<std::pair<std::string, double>> group_risk_order;
+    std::map<std::string, std::vector<CCTV_RISK>> grouped_risk_cctvs;  //cctv 그룹 map
+    std::vector<std::pair<std::string, double>> group_risk_order;      //risk_cctv를 정렬한 걸 저장할 변수
 
-    for (auto risk_cctv : risk_cctvs)
+    for (auto risk_cctv : risk_cctvs)                   //그룹을 만들기 위한 반복문, risk_cctvs 속 모든 요소 가져옴
     {
-        int risk_cctv_id = risk_cctv.cctv_id;
-        CCTV cctv = cctvs[risk_cctv_id];
-        std::string bjcd = cctv.bjcd;
+        int risk_cctv_id = risk_cctv.cctv_id;           //cctv_id
+        CCTV cctv = cctvs[risk_cctv_id];                //cctvs의 cctv_id에 해당하는 CCTV 구조체를 불러와 cctv에 저장
+        std::string bjcd = cctv.bjcd;                   //법정동 코드 저장
 
-        if (grouped_risk_cctvs.find(bjcd) == grouped_risk_cctvs.end())
+        if (grouped_risk_cctvs.find(bjcd) == grouped_risk_cctvs.end())  //중복 거름망
         {
-            grouped_risk_cctvs[bjcd] = std::vector<CCTV_RISK>();
+            grouped_risk_cctvs[bjcd] = std::vector<CCTV_RISK>();        //key:value 초기화
         }
 
-        grouped_risk_cctvs[bjcd].push_back(risk_cctv);
+        grouped_risk_cctvs[bjcd].push_back(risk_cctv);                  //법정동 코드별로 그룹을 만들기 위함
     }
 
-    for (auto [bjcd, risk_cctv_group] : grouped_risk_cctvs)
+    for (auto [bjcd, risk_cctv_group] : grouped_risk_cctvs)             // cctv 그룹 정렬을 위한 반복, grouped_risk_cctvs 속 모든 요소를 가져옴
     {
-        group_risk_order.push_back(std::make_pair(bjcd, risk_cctv_group[0].score));
+        group_risk_order.push_back(std::make_pair(bjcd, risk_cctv_group[0].score));     //정렬을 진행할 새로운 그룹에 값 추가
     }
 
-    std::sort(group_risk_order.begin(), group_risk_order.end(),
-        [](const std::pair<std::string, double>& a, const std::pair<std::string, double>& b) {
+    std::sort(group_risk_order.begin(), group_risk_order.end(),                         // 정렬하는 코드, 람다를 사용해 내림차순으로 정렬을 하게 만듬
+        [](const std::pair<std::string, double>& a, const std::pair<std::string, double>& b) {  
             return a.second > b.second;  // 내림차순
         });
 
@@ -127,15 +121,15 @@ int main()
     std::cout << "침수 위험 CCTV 법정동 코드 기반 그룹화 결과" << std::endl;
     std::cout << "===================================================" << std::endl;
 
-    for (int i = 0; i < group_risk_order.size();i++)
+    for (int i = 0; i < group_risk_order.size();i++)                    //출력하기 위한 반복문
     {
-        std::string bjcd = group_risk_order[i].first;
-        auto risk_cctv_group = grouped_risk_cctvs[bjcd];
+        std::string bjcd = group_risk_order[i].first;                   //정렬 그룹의 key값인 bjcd를 받는 변수
+        auto risk_cctv_group = grouped_risk_cctvs[bjcd];                //cctv 그룹의 bjcd에 해당하는 vector를 받는 변수
 
         std::cout << "BJCD : " << bjcd << std::endl;
         std::cout << "RISK CCTVS : " << std::endl;
 
-        for (int i = 0; i < risk_cctv_group.size(); i++)
+        for (int i = 0; i < risk_cctv_group.size(); i++)                //법정동 코드를 기준으로 그룹화된 cctvid와 위험도를 정렬된 순서대로 출력하는 코드
         {
             std::cout << "CCTV ID : " << risk_cctv_group[i].cctv_id << " / SCORE : " << risk_cctv_group[i].score << std::endl;
         }
@@ -145,6 +139,4 @@ int main()
     std::cout << "===================================================" << std::endl;
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    return 0;
 }
