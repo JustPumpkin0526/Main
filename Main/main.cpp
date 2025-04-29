@@ -10,8 +10,9 @@
 #include "Opencv tutorial\color_train\color_train.h"
 #include "CCTV_bjcd/cctv_bjcd.h"
 #include "C++ tutorial/20250416/rand_test.h"
+#include "C++ tutorial/20250424/function.h"
 
-int main() {
+void main() {
 
 	//C++ tutorial Code
 	//tuto0319();
@@ -24,9 +25,9 @@ int main() {
 	//der();
 	cctv_bjcd();
 	//rand_test();
+	//function_test();
 
 	//OpenCV tutorial Code
 	//edge_train();
 	//color_train();
-	return 0;
 }

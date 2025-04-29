@@ -143,7 +143,7 @@ struct CCTV_RISK
 void cctv_bjcd()
 {
     const int max_cctv_num = 100;
-    std::map<int, CCTV> cctvs;
+    std::map<int, CCTV> cctvs;      //cctv id별로 나누기 위한 map 변수
     std::set<CCTV_RISK> risk_cctvs; //set을 사용해 자동 정렬
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -155,9 +155,9 @@ void cctv_bjcd()
         , "4136025600", "4163011400", "1120010800", "4719012300", "4122010600", "4793036000", "4167035000", "4182025000", "4372025000"
         , "9972025000", "9963034000", "9911011000" };
 
-    std::random_device rd;  //시드값 획득
-    std::mt19937 gen(rd()); //난수 생성 엔진 초기화
-    std::uniform_int_distribution<> rand_score_dist(0, max_cctv_num); //난수 생성 범위 지정
+    std::random_device rd;                                              //시드값 획득
+    std::mt19937 gen(rd());                                             //난수 생성 엔진 초기화
+    std::uniform_int_distribution<> rand_score_dist(0, max_cctv_num);   //난수 생성 범위 지정
 
     std::cout << "===================================================" << std::endl;
     std::cout << "테스트 더미 데이터 셋 생성" << std::endl;
@@ -171,22 +171,22 @@ void cctv_bjcd()
         int remain_cctv_num = max_cctv_num - cctvs.size();  //남은 cctv의 수 계산식
         int remain_pos_num = pos_cctvs.size() - i;          //남은 그룹 수 측정
         int rand_cctv_num_max = remain_cctv_num - remain_pos_num + 1; //생성할 cctv의 최대 갯수 (남은 cctv의 수에서 남은 그룹 수를 빼고 1을 더함으로써 각 그룹에 최소 1개의 cctv는 들어갈 수 있도록 함)
-        if (i < 10) rand_cctv_num_max /= 2;     // 데이터 균등하게 분배하기 위함 (한 그룹의 과도하게 쏠리는 문제 방지)
+        if (i < 10) rand_cctv_num_max /= 2;                 // 데이터 균등하게 분배하기 위함 (한 그룹의 과도하게 쏠리는 문제 방지)
 
         std::uniform_int_distribution<> alloc_cctv_num_dist(1, rand_cctv_num_max);  //난수 생성 범위 지정
-        int alloc_cctv_num = alloc_cctv_num_dist(gen);  //gen에 들어있는 난수 생성 엔진을 따라 난수 생성
+        int alloc_cctv_num = alloc_cctv_num_dist(gen);      //gen에 들어있는 난수 생성 엔진을 따라 난수 생성
         std::cout << "Group Index : " << i + 1 << std::endl << "Group BJCD : " << pos_bjcds[i] << std::endl;
         std::cout << "남아있는 CCTV : " << remain_cctv_num << std::endl;
         std::cout << "생성할 CCTV : " << alloc_cctv_num << std::endl;
         std::cout << "---------------------------------------------------" << std::endl;
-        for (int k = 0; k < alloc_cctv_num; k++)  //난수만큼 cctvs/risk_cctvs 더미 데이터 생성
+        for (int k = 0; k < alloc_cctv_num; k++)    //난수만큼 cctvs/risk_cctvs 더미 데이터 생성
         {
-            int cctv_id = pos_cctvs[i] + k; // cctv 증강
-            std::string bjcd = pos_bjcds[i];  //현재 법정동 코드 확인
-            double score = rand_score_dist(gen); //CCTV 위험도 생성 (난수 생성 엔진 따라 0 ~ 100 사이의 난수 생성)
+            int cctv_id = pos_cctvs[i] + k;         //cctv 증강
+            std::string bjcd = pos_bjcds[i];        //현재 법정동 코드 확인
+            double score = rand_score_dist(gen);    //CCTV 위험도 생성 (난수 생성 엔진 따라 0 ~ 100 사이의 난수 생성)
             //std::cout << cctv_id << std::endl;
-            cctvs[cctv_id] = CCTV(cctv_id, bjcd); //cctvs 더미 데이터 생성 
-            risk_cctvs.insert(CCTV_RISK(cctv_id, score)); //risk_cctvs 더미 데이터 생성
+            cctvs[cctv_id] = CCTV(cctv_id, bjcd);          //cctvs 더미 데이터 생성 
+            risk_cctvs.insert(CCTV_RISK(cctv_id, score));  //risk_cctvs 더미 데이터 생성
         }
     }
 
@@ -195,17 +195,22 @@ void cctv_bjcd()
 
     std::map<std::string, std::vector<CCTV_RISK>> grouped_risk_cctvs;  //cctv 그룹화용 변수
     std::vector<std::pair<std::string, double>> group_risk_order;      //risk_cctvs의 정렬 그룹화용 변수
+    //법정동 코드 별 grouped_risk_cctvs 초기화
 
-    for (auto risk_cctv : risk_cctvs)                   //그룹을 만들기 위한 반복문 (risk_cctvs 속 모든 요소 가져옴)                           
+    for (int i = 0;i < pos_bjcds.size(); i++) {
+        grouped_risk_cctvs[pos_bjcds[i]] = std::vector<CCTV_RISK>();
+    }
+
+    for (auto risk_cctv : risk_cctvs)                                   //그룹을 만들기 위한 반복문 (risk_cctvs 속 모든 요소 가져옴)                           
     {
-        int risk_cctv_id = risk_cctv.cctv_id;           //set을 사용해 정렬된 risk_cctv의 cctv_id 저장
-        CCTV cctv = cctvs[risk_cctv_id];                //cctvs의 cctv_id에 해당하는 CCTV 구조체를 불러와 cctv에 저장
-        std::string bjcd = cctv.bjcd;                   //법정동 코드 저장
+        int risk_cctv_id = risk_cctv.cctv_id;                           //set을 사용해 정렬된 risk_cctv의 cctv_id 저장
+        CCTV cctv = cctvs[risk_cctv_id];                                //cctvs의 cctv_id에 해당하는 CCTV 구조체를 불러와 cctv에 저장
+        std::string bjcd = cctv.bjcd;                                   //법정동 코드 저장
 
-        if (grouped_risk_cctvs.find(bjcd) == grouped_risk_cctvs.end())  //중복 거름망
-        {
-            grouped_risk_cctvs[bjcd] = std::vector<CCTV_RISK>();        //key:value 초기화
-        }
+        //if (grouped_risk_cctvs.find(bjcd) == grouped_risk_cctvs.end())  //중복 거름망
+        //{
+        //    grouped_risk_cctvs[bjcd] = std::vector<CCTV_RISK>();        //key:value 초기화
+        //}
         /*if (cctv.bjcd == "4165035000") {
             std::cout << cctv.bjcd << std::endl;
             std::cout << cctv.id << std::endl;
@@ -216,10 +221,12 @@ void cctv_bjcd()
         }*/
         grouped_risk_cctvs[bjcd].push_back(risk_cctv);                  //법정동 코드를 기준으로 해당하는 법정동 코드를 가진 CCTV_RISK 값 추가
     }
+    
+
 
     for (auto [bjcd, risk_cctv_group] : grouped_risk_cctvs)             // cctv 그룹 정렬을 위한 반복, grouped_risk_cctvs 속 모든 요소를 가져옴
     {
-        group_risk_order.push_back(std::make_pair(bjcd, risk_cctv_group[0].score));     //정렬을 진행할 새로운 그룹에 값 추가
+        group_risk_order.push_back(std::make_pair(bjcd, risk_cctv_group[0].score)); //정렬을 진행할 새로운 그룹에 값 추가
     }
 
     std::sort(group_risk_order.begin(), group_risk_order.end(),         // 정렬하는 코드, 람다를 사용해 내림차순으로 정렬을 하게 만듬
