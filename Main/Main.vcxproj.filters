@@ -135,6 +135,9 @@
     <ClCompile Include="C++ tutorial\20250429\TCP_IP.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="C++ tutorial\20250508\thread_test.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C++ tutorial\20250319\callstarstamp.h">
@@ -174,6 +177,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="C++ tutorial\20250429\tcp_ip.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="C++ tutorial\20250508\thread_test.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

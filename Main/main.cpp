@@ -11,6 +11,7 @@
 #include "CCTV_bjcd/cctv_bjcd.h"
 #include "C++ tutorial/20250416/rand_test.h"
 #include "C++ tutorial/20250424/function.h"
+#include "C++ tutorial/20250508/thread_test.h"
 
 void main() {
 
@@ -23,9 +24,10 @@ void main() {
 	//tuto0326();
 	//define_test();
 	//der();
-	cctv_bjcd();
+	//cctv_bjcd();
 	//rand_test();
 	//function_test();
+	thread_test();
 
 	//OpenCV tutorial Code
 	//edge_train();
