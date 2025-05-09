@@ -13,7 +13,7 @@
 #include "C++ tutorial/20250424/function.h"
 #include "C++ tutorial/20250508/thread_test.h"
 
-void main() {
+int main() {
 
 	//C++ tutorial Code
 	//tuto0319();
@@ -32,4 +32,6 @@ void main() {
 	//OpenCV tutorial Code
 	//edge_train();
 	//color_train();
+
+	return 0;
 }
